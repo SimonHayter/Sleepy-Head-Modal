@@ -9,4 +9,4 @@ I welcome all bug fixes and feature suggestions. Simply push your changes and do
 ###### Connect with Simon Hayter
 - [About.me](https://about.me/simonhayter)
 - [Dribbble.com](https://dribbble.com/simonhayter)
-- [Twitter.com](https://twitter.com/simonhayteruk
+- [Twitter.com](https://twitter.com/simonhayteruk)
