@@ -231,6 +231,6 @@ Bug fixes and ideas are always welcome. [Open an issue](https://github.com/Simon
 
 <div align="center">
 
-Made by [Simon Hayter](https://simonhayter.co.uk) · [About.me](https://about.me/simonhayter) · [Dribbble](https://dribbble.com/simonhayter) · [Twitter](https://twitter.com/simonhayteruk)
+Made by [Simon Hayter](https://simonhayter.co.uk) · [About.me](https://about.me/simonhayter) · [Dribbble](https://dribbble.com/simonhayter) · [Twitter](https://twitter.com/simonhayteruk) · [GitHub](https://github.com/SimonHayter)
 
 </div>
