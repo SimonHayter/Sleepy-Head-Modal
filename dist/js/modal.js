@@ -1,5 +1,5 @@
 /**
- * Sleepy Head Modal v1.0.0
+ * Sleepy Head Modal v1.0.1
  * https://github.com/SimonHayter/Sleepy-Head-Modal
  *
  * Shows a friendly modal dialog after a visitor has been inactive for a while.
@@ -9,7 +9,7 @@
  * @license MIT
  */
 
-export const VERSION = '1.0.0';
+export const VERSION = '1.0.1';
 
 /** Owls bundled in dist/img. Pick one with the `owl` option. */
 export const OWLS = ['brown', 'blue', 'mint', 'pink', 'sunset'];

@@ -48,7 +48,7 @@ Paste this inside your page's `<head>`:
 
 ```html
 <!-- Sleepy Head: styles (inside <head>) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.0/dist/css/modal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.1/dist/css/modal.css">
 ```
 
 ### 2. The HTML
@@ -71,7 +71,7 @@ Paste this just before your closing `</body>` tag:
     </header>
     <div class="sleepy-head__body">
       <div class="sleepy-head__owl" aria-hidden="true">
-        <img src="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.0/dist/img/brown-owl.svg" alt="" width="110" height="122">
+        <img src="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.1/dist/img/brown-owl.svg" alt="" width="110" height="122">
         <span class="sleepy-head__zzz"><span>z</span><span>z</span><span>z</span></span>
       </div>
       <div class="sleepy-head__message" id="sleepy-head-message">
@@ -92,7 +92,7 @@ Paste this straight after the modal HTML, still before `</body>`. The first line
 
 ```html
 <!-- Sleepy Head: script (after the modal, before </body>) -->
-<script type="module" src="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.0/dist/js/modal.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.1/dist/js/modal.js"></script>
 <script type="module">
   sleepyHead({
     timeout: 20000, // milliseconds of inactivity before the owl nods off
@@ -150,7 +150,7 @@ owl.dialog.addEventListener('sleepyhead:wake', (event) => console.log('Woken by'
 If your own code uses JavaScript modules, you can import it instead of using the global `sleepyHead`:
 
 ```js
-import { sleepyHead } from 'https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.0/dist/js/modal.js';
+import { sleepyHead } from 'https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.1/dist/js/modal.js';
 ```
 
 ## Changing the wording
@@ -187,7 +187,7 @@ Dark mode is built in. To change its colours, set the same properties inside `@m
 Prefer not to use a CDN? [Download the latest release](https://github.com/SimonHayter/Sleepy-Head-Modal/releases/latest), copy the `dist` folder into your site, and in the three snippets replace
 
 ```
-https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.0/dist/
+https://cdn.jsdelivr.net/gh/SimonHayter/Sleepy-Head-Modal@1.0.1/dist/
 ```
 
 with the path to your copy, for example `/dist/`. Keep `css`, `js` and `img` together inside `dist`, because the script finds the owls relative to its own location.
