@@ -15,11 +15,11 @@ No dependencies, built on the native `<dialog>` element, and accessible out of t
 
 <table>
   <tr>
-    <td align="center"><img src="dist/img/brown-owl.svg" width="90" alt="Brown owl"><br><b>Brown</b><br><code>brown</code></td>
-    <td align="center"><img src="dist/img/blue-owl.svg" width="90" alt="Blue owl"><br><b>Blue</b><br><code>blue</code></td>
-    <td align="center"><img src="dist/img/mint-owl.svg" width="90" alt="Mint owl"><br><b>Mint</b><br><code>mint</code></td>
-    <td align="center"><img src="dist/img/pink-owl.svg" width="90" alt="Pink owl"><br><b>Pink</b><br><code>pink</code></td>
-    <td align="center"><img src="dist/img/sunset-owl.svg" width="90" alt="Sunset owl"><br><b>Sunset</b><br><code>sunset</code></td>
+    <td align="center"><img src="dist/img/brown-owl.svg" width="90" alt="Brown owl"><br><b>Brown</b></td>
+    <td align="center"><img src="dist/img/blue-owl.svg" width="90" alt="Blue owl"><br><b>Blue</b></td>
+    <td align="center"><img src="dist/img/mint-owl.svg" width="90" alt="Mint owl"><br><b>Mint</b></td>
+    <td align="center"><img src="dist/img/pink-owl.svg" width="90" alt="Pink owl"><br><b>Pink</b></td>
+    <td align="center"><img src="dist/img/sunset-owl.svg" width="90" alt="Sunset owl"><br><b>Sunset</b></td>
   </tr>
 </table>
 
