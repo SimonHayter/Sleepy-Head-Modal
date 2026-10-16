@@ -1,0 +1,289 @@
+/**
+ * Sleepy Head Modal v1.0.0
+ * https://github.com/SimonHayter/Sleepy-Head-Modal
+ * MIT License
+ *
+ * Everything the modal needs to look right on its own. Theme it by
+ * overriding the custom properties on `.sleepy-head`.
+ */
+
+.sleepy-head {
+  --sleepy-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; /* GitHub's system font stack */
+  --sleepy-radius: 0.5rem;
+  --sleepy-surface: #fff;
+  --sleepy-panel: #eee;
+  --sleepy-text: #1f1f1f;
+  --sleepy-muted: #4a4a4a;
+  --sleepy-accent: #b23445;
+  --sleepy-accent-hover: #8f2636;
+  --sleepy-on-accent: #fff;
+  --sleepy-focus: #1a5fb4;
+  --sleepy-backdrop: rgb(0 0 0 / 0.55);
+  --sleepy-duration: 0.35s;
+
+  color-scheme: light;
+  box-sizing: border-box;
+  inline-size: min(26rem, 100% - 2rem);
+  max-block-size: calc(100% - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--sleepy-radius);
+  background: var(--sleepy-surface);
+  color: var(--sleepy-text);
+  font-family: var(--sleepy-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 0.75rem 2.5rem rgb(0 0 0 / 0.3);
+  overflow: auto;
+
+  /* Fade and lift in/out. `display` and `overlay` keep the exit animation visible. */
+  opacity: 0;
+  translate: 0 1rem;
+  scale: 0.96;
+  transition:
+    opacity var(--sleepy-duration) ease,
+    translate var(--sleepy-duration) ease,
+    scale var(--sleepy-duration) ease,
+    overlay var(--sleepy-duration) allow-discrete,
+    display var(--sleepy-duration) allow-discrete;
+}
+
+.sleepy-head *,
+.sleepy-head *::before,
+.sleepy-head *::after {
+  box-sizing: inherit;
+}
+
+.sleepy-head[open] {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+.sleepy-head::backdrop {
+  background: transparent;
+  transition:
+    background-color var(--sleepy-duration) ease,
+    overlay var(--sleepy-duration) allow-discrete,
+    display var(--sleepy-duration) allow-discrete;
+}
+
+.sleepy-head[open]::backdrop {
+  background: var(--sleepy-backdrop);
+}
+
+@starting-style {
+  .sleepy-head[open] {
+    opacity: 0;
+    translate: 0 1rem;
+    scale: 0.96;
+  }
+
+  .sleepy-head[open]::backdrop {
+    background: transparent;
+  }
+}
+
+/* Stop the page behind from scrolling while the owl naps. */
+html:has(.sleepy-head[open]) {
+  overflow: hidden;
+}
+
+.sleepy-head__panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.sleepy-head__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sleepy-head__header form {
+  display: contents;
+}
+
+.sleepy-head__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.sleepy-head__close {
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem; /* 44px touch target */
+  block-size: 2.75rem;
+  margin-inline-end: -0.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--sleepy-muted);
+  cursor: pointer;
+}
+
+.sleepy-head__close:hover {
+  background: var(--sleepy-panel);
+  color: var(--sleepy-text);
+}
+
+.sleepy-head__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--sleepy-radius);
+  background: var(--sleepy-panel);
+}
+
+.sleepy-head__owl {
+  position: relative;
+  inline-size: 6.875rem;
+}
+
+.sleepy-head__owl img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  transform-origin: 50% 100%;
+  animation: sleepy-head-breathe 3.5s ease-in-out infinite;
+}
+
+.sleepy-head__zzz {
+  position: absolute;
+  inset-block-start: -0.5rem;
+  inset-inline-end: -0.5rem;
+  color: var(--sleepy-muted);
+  font-weight: 700;
+}
+
+.sleepy-head__zzz span {
+  display: inline-block;
+  opacity: 0;
+  animation: sleepy-head-zzz 3s ease-in-out infinite;
+}
+
+.sleepy-head__zzz span:nth-child(2) { font-size: 1.15em; animation-delay: 0.6s; }
+.sleepy-head__zzz span:nth-child(3) { font-size: 1.3em; animation-delay: 1.2s; }
+
+.sleepy-head__message p {
+  margin: 0;
+  color: var(--sleepy-muted);
+  font-size: 0.9375rem;
+}
+
+/* Steady digits so the count-up doesn't jiggle the text. */
+.sleepy-head [data-sleepy-head-duration] {
+  font-variant-numeric: tabular-nums;
+}
+
+.sleepy-head__message p + p {
+  margin-block-start: 0.5rem;
+}
+
+.sleepy-head__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.sleepy-head__wake {
+  min-block-size: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: var(--sleepy-radius);
+  background: var(--sleepy-accent);
+  color: var(--sleepy-on-accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sleepy-head__wake:hover {
+  background: var(--sleepy-accent-hover);
+}
+
+.sleepy-head__close:focus-visible,
+.sleepy-head__wake:focus-visible {
+  outline: 3px solid var(--sleepy-focus);
+  outline-offset: 2px;
+}
+
+@keyframes sleepy-head-breathe {
+  50% { scale: 1.03 0.98; }
+}
+
+@keyframes sleepy-head-zzz {
+  0% { opacity: 0; translate: 0 0.5rem; }
+  40% { opacity: 1; }
+  100% { opacity: 0; translate: 0.25rem -0.75rem; }
+}
+
+/* Small screens: stack the owl above the message. */
+@media (width <= 30rem) {
+  .sleepy-head__body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .sleepy-head__owl {
+    inline-size: 5rem;
+  }
+
+  .sleepy-head__wake {
+    flex: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .sleepy-head {
+    --sleepy-surface: #1f1f23;
+    --sleepy-panel: #2c2c32;
+    --sleepy-text: #f2f2f2;
+    --sleepy-muted: #c8c8cc;
+    --sleepy-accent: #c43d50;
+    --sleepy-accent-hover: #a83142;
+    --sleepy-focus: #78aeff;
+    --sleepy-backdrop: rgb(0 0 0 / 0.7);
+
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sleepy-head,
+  .sleepy-head::backdrop {
+    --sleepy-duration: 0.01s;
+
+    translate: none;
+    scale: none;
+  }
+
+  .sleepy-head__owl img,
+  .sleepy-head__zzz span {
+    animation: none;
+  }
+
+  .sleepy-head__zzz span {
+    opacity: 1;
+  }
+}
+
+/* Windows High Contrast / forced colours */
+@media (forced-colors: active) {
+  .sleepy-head {
+    border: 2px solid CanvasText;
+  }
+
+  .sleepy-head__wake {
+    border: 2px solid ButtonText;
+  }
+}

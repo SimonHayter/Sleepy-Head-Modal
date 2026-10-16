@@ -1,40 +1,100 @@
 <!doctype html>
 <html lang="en">
-	<head>
-	  <meta charset="utf-8">
-	  <title>Sleepy Head Modal Demo</title>
-	  <meta name="description" content="An insanely simple inactive user script that alerts users after X mins of being AFK">
-	  <meta name="author" content="Simon Hayter">
-	  <link rel="stylesheet" href="css/style.css">
-	  <!--[if lt IE 9]>
-	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	  <![endif]-->
-	</head>
-	<body>
-		<div class="sleepy-overlay">
-		    <div class="sleepy-modal">
-		        <div class="sleepy-header">
-		        	<span>Snoozing...</span>
-		            <div class="sleepy-close"> </div>
-		        </div>
-		        <div class="sleepy-content">
-		            <div class="sleepy-owl">
-		                <div class="sleepy-img"> </div>
-		            </div>
-		            <div class="sleepy-message">
-		                <p>Hey good looking, I have detected that you have been inactive for more than 20secs...</p>
-		                <p>I got sleepy so I've taken a nap!</p>
-		                <p class="sleepy-mobile-only">Alright Sleepy Head...</p>
-		            </div>
-		        </div>
-		        <div class="sleepy-wake-up">Wake Up!</div>
-		    </div>
-		</div>
-		<footer>
-		    <p><a href="https://simonhayter.co.uk">Script by Simon Hayter</a></p>
-		</footer>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-		<script src="js/sleepy-head.js"></script>
-	</body>
-</html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleepy Head Modal Demo</title>
+  <meta name="description" content="A tiny, dependency-free script that shows a friendly modal after a visitor has been inactive for a while.">
+  <meta name="author" content="Simon Hayter">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="dist/img/brown-owl.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="dist/css/modal.css">
+  <link rel="stylesheet" href="demo/css/demo.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
+  <main id="main">
+    <section class="card" aria-labelledby="intro-title">
+      <h1 id="intro-title">Sleepy Head Modal</h1>
+      <p>Stop moving your mouse, scrolling or typing and the owl will nod off. A friendly modal lets you know, and one click wakes everyone back up.</p>
+      <p>No jQuery, no dependencies, just a native <code>&lt;dialog&gt;</code> with keyboard and screen reader support.</p>
+
+      <div class="status">
+        <!-- Updated every second; deliberately not a live region so screen readers aren't spammed. -->
+        <p class="countdown">Owl naps in <output id="countdown" for="timeout">20 seconds</output></p>
+      </div>
+
+      <div class="controls">
+        <label>
+          Nap after
+          <select id="timeout">
+            <option value="10000">10 seconds</option>
+            <option value="20000" selected>20 seconds</option>
+            <option value="60000">1 minute</option>
+            <option value="300000">5 minutes</option>
+          </select>
+        </label>
+        <label>
+          Owl
+          <select id="owl">
+            <option value="brown" selected>Brown</option>
+            <option value="blue">Blue</option>
+            <option value="mint">Mint</option>
+            <option value="pink">Pink</option>
+            <option value="sunset">Sunset</option>
+          </select>
+        </label>
+        <button class="button" type="button" id="nap-now">Nap now</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="usage-title">
+      <h2 id="usage-title">Use it on your site</h2>
+      <p>Copy the <code>dist</code> folder to your site, add the stylesheet and the modal’s HTML, then load the script and start it:</p>
+      <pre><code>&lt;link rel="stylesheet" href="dist/css/modal.css"&gt;</code></pre>
+      <pre><code>&lt;script type="module" src="dist/js/modal.js"&gt;&lt;/script&gt;
+&lt;script type="module"&gt;
+  sleepyHead({ timeout: 20000 });
+&lt;/script&gt;</code></pre>
+      <p>The full copy-and-paste setup is in the <a href="https://github.com/SimonHayter/Sleepy-Head-Modal#readme">README on GitHub</a>.</p>
+    </section>
+  </main>
+
+  <!-- Sleepy Head modal -->
+  <dialog class="sleepy-head" data-sleepy-head aria-labelledby="sleepy-head-title" aria-describedby="sleepy-head-message">
+    <div class="sleepy-head__panel">
+      <header class="sleepy-head__header">
+        <h2 class="sleepy-head__title" id="sleepy-head-title">Shh… the owl’s napping</h2>
+        <form method="dialog">
+          <button class="sleepy-head__close" value="close" aria-label="Close">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+              <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </form>
+      </header>
+      <div class="sleepy-head__body">
+        <div class="sleepy-head__owl" aria-hidden="true">
+          <img src="dist/img/brown-owl.svg" alt="" width="110" height="122">
+          <span class="sleepy-head__zzz"><span>z</span><span>z</span><span>z</span></span>
+        </div>
+        <div class="sleepy-head__message" id="sleepy-head-message">
+          <p>Nothing’s stirred for <span data-sleepy-head-duration>20 seconds</span>, so I took that as my cue for forty winks.</p>
+          <p>Nudge me when you’re back. I’m a light sleeper, honest.</p>
+        </div>
+      </div>
+      <form class="sleepy-head__actions" method="dialog">
+        <button class="sleepy-head__wake" value="wake" autofocus>I’m back!</button>
+      </form>
+    </div>
+  </dialog>
+
+  <footer>
+    <p><a href="https://simonhayter.co.uk">Script by Simon Hayter</a></p>
+  </footer>
+
+  <script type="module" src="dist/js/modal.js"></script>
+  <script type="module" src="demo/js/demo.js"></script>
+</body>
+</html>
